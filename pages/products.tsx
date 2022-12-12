@@ -36,9 +36,6 @@ export default function ProductListPage() {
     },
   });
 
-  // Use the `useApolloClient` hook to get the `client` instance
-  // const client = useApolloClient();
-
   const link = createHttpLink({
     uri: 'https://saleor.oaktree.digital/graphql/',
   });
@@ -54,7 +51,7 @@ export default function ProductListPage() {
   });
 
   // Add a type assertion to the `data` variable to tell the TypeScript compiler that you are confident that the `data` variable will be defined
-  const products = (data as QueryResult).products.edges;
+  const products = data?.products?.edges || [];
 
 
   return (
