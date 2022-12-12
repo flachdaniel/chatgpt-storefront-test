@@ -1,9 +1,9 @@
 
-import { ApolloProvider, useQuery, useApolloClient } from '@apollo/client'
 import { createTheme } from '@material-ui/core/styles';
 import React from 'react';
 import { ThemeProvider } from '@material-ui/styles';
 import { Grid, Card, CardMedia, CardContent, Typography } from '@material-ui/core';
+import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink, useQuery } from '@apollo/client';
 
 // Import the `PRODUCT_LIST_QUERY` from the '../queries' module
 import { PRODUCT_LIST_QUERY } from '../queries';
@@ -37,7 +37,16 @@ export default function ProductListPage() {
   });
 
   // Use the `useApolloClient` hook to get the `client` instance
-  const client = useApolloClient();
+  // const client = useApolloClient();
+
+  const link = createHttpLink({
+    uri: 'https://saleor.oaktree.digital/graphql/',
+  });
+
+  const client = new ApolloClient({
+    cache: new InMemoryCache(),
+    link: link,
+  });
 
   // Use the `useQuery` hook to fetch data from the GraphQL endpoint
   const { loading, data } = useQuery<QueryResult>(PRODUCT_LIST_QUERY, {

@@ -23,7 +23,4 @@ function Root() {
   );
 }
 
-// Render the `Root` component to the DOM
-ReactDOM.render(<Root />, document.getElementById('root'));
-
 export { Root };
