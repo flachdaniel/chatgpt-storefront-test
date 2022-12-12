@@ -45,26 +45,23 @@ export default function ProductListPage() {
     link: link,
   });
 
-  // Use the `useQuery` hook to fetch data from the GraphQL endpoint
-  const { loading, data } = useQuery<QueryResult>(PRODUCT_LIST_QUERY, {
-    client,
-  });
-
-  // Add a type assertion to the `data` variable to tell the TypeScript compiler that you are confident that the `data` variable will be defined
-  const products = data?.products?.edges || [];
-
-
   return (
     <ThemeProvider theme={theme}>
     <ApolloProvider client={client}>
       {/* Use the `Products` component to display a list of product cards, passing the `products` and `loading` props to the `Products` component */}
-      <Products products={products} loading={loading} />
+      <Products/>
     </ApolloProvider>
     </ThemeProvider>
   );
 }
 
-function Products({ products, loading }: { products: ProductEdge[]; loading: boolean }) {
+function Products({ }: { }) {
+  // Use the `useQuery` hook to fetch data from the GraphQL endpoint
+  const { loading, data } = useQuery<QueryResult>(PRODUCT_LIST_QUERY);
+
+  // Add a type assertion to the `data` variable to tell the TypeScript compiler that you are confident that the `data` variable will be defined
+  const products = data?.products?.edges || [];
+
   return (
     <Grid container spacing={3}>
       {/* Use the `loading` prop to display a loading message while the data is being fetched from the GraphQL endpoint */}
