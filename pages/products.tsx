@@ -40,10 +40,8 @@ export default function ProductListPage() {
 
   return (
     <ThemeProvider theme={theme}>
-    <ApolloProvider client={client}>
       {/* Use the `Products` component to display a list of product cards, passing the `products` and `loading` props to the `Products` component */}
-      <Products/>
-    </ApolloProvider>
+    <Products/>
     </ThemeProvider>
   );
 }
