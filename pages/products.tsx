@@ -36,14 +36,7 @@ export default function ProductListPage() {
     },
   });
 
-  const link = createHttpLink({
-    uri: 'https://saleor.oaktree.digital/graphql/',
-  });
-
-  const client = new ApolloClient({
-    cache: new InMemoryCache(),
-    link: link,
-  });
+// I will need a client here.UseApolloClient
 
   return (
     <ThemeProvider theme={theme}>
