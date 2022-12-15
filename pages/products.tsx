@@ -36,8 +36,6 @@ export default function ProductListPage() {
     },
   });
 
-// I will need a client here.UseApolloClient
-
   return (
     <ThemeProvider theme={theme}>
       {/* Use the `Products` component to display a list of product cards, passing the `products` and `loading` props to the `Products` component */}
