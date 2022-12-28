@@ -46,7 +46,9 @@ export default function ProductListPage() {
 
 function Products({ }: { }) {
   // Use the `useQuery` hook to fetch data from the GraphQL endpoint
-  const { loading, data } = useQuery<QueryResult>(PRODUCT_LIST_QUERY);
+  const { loading, data, error } = useQuery<QueryResult>(PRODUCT_LIST_QUERY);
+
+  
 
   // Add a type assertion to the `data` variable to tell the TypeScript compiler that you are confident that the `data` variable will be defined
   const products = data?.products?.edges || [];
